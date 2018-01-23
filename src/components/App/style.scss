@@ -1,0 +1,14 @@
+.main-app {
+    width: 100%;
+    max-width: 100rem;
+    margin: auto;
+
+    & > div {
+        display: table-cell;
+        vertical-align: top;
+    }
+}
+
+img {
+    max-width: 100%;
+}

@@ -1,5 +1,4 @@
-import ratings from './ratings.json';
-
-export function getPlayerRatings() {
-    return ratings.playerRatings;
+import propertyList from './propertyList.json';
+export function getPropertyList() {
+    return propertyList;
 }
