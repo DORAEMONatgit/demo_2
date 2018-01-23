@@ -4,72 +4,66 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './public/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
 });
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   target: 'web',
-  entry: ['./src/index.js'],
+  entry: ['@babel/polyfill','./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/js/index_bundle.js'
+    filename: 'assets/js/index_bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: [
-        {
-          loader:'babel-loader'
-        }],
-        exclude: /node_modules/
+        use: ['babel-loader','eslint-loader'],
+        exclude: /node_modules/,
       },
       { test: /\.json$/,
         use: [
-        {
-          loader: 'json-loader'
-        }]
+          {
+            loader: 'json-loader',
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        // use: [
-        // {
-        //   loader: 'style-loader' // creates style nodes from JS strings
-        // },
-        // {
-        //   loader: 'css-loader' // translates CSS into CommonJS
-        // },
-        // {
-        //   loader: 'postcss-loader'
-        // },
-        // {
-        //   loader: 'sass-loader' // compiles Sass to CSS
-        // }]
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-          {
-            loader: 'css-loader' // translates CSS into CommonJS
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader' // compiles Sass to CSS
-          }],
-        })
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'postcss-loader',
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        }),
       },
-    ]
+    ],
   },
   plugins: [
     HtmlWebpackPluginConfig,
     new ExtractTextPlugin('assets/styles/main.css'),
+    new styleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+    }),
   ],
   resolve: {
     extensions: ['.js'],
     alias: {
-        ['~']: resolve(__dirname, 'src')
-    }
-  }
-}
+      ['~']: resolve(__dirname, 'src'),
+    },
+  },
+};

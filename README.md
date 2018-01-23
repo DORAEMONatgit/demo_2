@@ -7,10 +7,12 @@
 
 npm install
 
+## Run
+
 npm start
 
 Go to http://localhost:8080. Make sure port is available.
 
-## Run test
+## Unit test
 
 npm test
