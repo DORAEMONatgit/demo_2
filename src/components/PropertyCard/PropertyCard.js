@@ -6,9 +6,12 @@ import style from './style.scss';
 export default class PropertyCard extends React.Component {
     render() {
         const property = this.props.property;
+        const style = {
+            backgroundColor: property.agency.brandingColors.primary
+        }
         return (
-            <div className="property-view">
-                <div className="heading">
+            <div className="property-card">
+                <div className="heading" style={style}>
                     <img src={property.agency.logo} />
                 </div>
                 <div className="image">

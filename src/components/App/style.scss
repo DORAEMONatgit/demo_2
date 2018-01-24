@@ -12,3 +12,28 @@
 img {
     max-width: 100%;
 }
+
+.property-card-wrapper {
+    position: relative;
+
+    button {
+        height: 1rem;
+        width: 20%;
+
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        display: none;
+        padding: 0 0.5rem;
+    }
+
+    &:hover {
+        button {
+            display: block;
+        }
+    }
+}

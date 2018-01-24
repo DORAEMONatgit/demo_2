@@ -8,13 +8,19 @@ export default class App extends React.Component {
     render() {
         const results = this.props.propertyList.results.map((property, index) => {
             return (
-                <PropertyCard property={property} key={index}/>
+                <div className="property-card-wrapper" key={index}>
+                    <PropertyCard property={property}/>
+                    <button>add property</button>
+                </div>
             );
         });
 
         const savedProperties = this.props.propertyList.saved.map((property, index) => {
             return (
-                <PropertyCard property={property} key={index}/>
+                <div className="property-card-wrapper" key={index}>
+                    <PropertyCard property={property}/>
+                    <button>remove property</button>
+                </div>
             );
         });
 
