@@ -10,7 +10,7 @@ export default class App extends React.Component {
             return (
                 <div className="property-card-wrapper" key={index}>
                     <PropertyCard property={property}/>
-                    <button>add property</button>
+                    <button onClick={this.addProperty(property)}>add property</button>
                 </div>
             );
         });
@@ -19,20 +19,22 @@ export default class App extends React.Component {
             return (
                 <div className="property-card-wrapper" key={index}>
                     <PropertyCard property={property}/>
-                    <button>remove property</button>
+                    <button  onClick={this.removeProperty(property)}>remove property</button>
                 </div>
             );
         });
 
         return (
             <div className="main-app">
-                <div className="results">
+                <div className="column-div">
                     <div className="heading">
-                        results
+                        Results
                     </div>
                     {results}
                 </div>
-                <div className="saved-properties">
+                <div className="padding-div">
+                </div>
+                <div className="column-div">
                     <div className="heading">
                         Saved Properties
                     </div>
@@ -40,6 +42,14 @@ export default class App extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    addProperty(property) {
+        this.props.propertyList.saved.push(property);
+    }
+
+    removeProperty(property) {
+        this.props.propertyList.saved.splice(property);
     }
 }
 

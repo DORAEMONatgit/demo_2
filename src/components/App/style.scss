@@ -2,28 +2,37 @@
     width: 100%;
     max-width: 100rem;
     margin: auto;
+    display: flex;
+    justify-content: center;
 
-    & > div {
-        display: table-cell;
-        vertical-align: top;
+    div.column-div {
+        flex-basis: 64rem;
+        flex-shrink: 1;
+
+        div.heading {
+            font-size: 4vw;
+            text-align: center;
+        }
     }
-}
 
-img {
-    max-width: 100%;
+    div.padding-div {
+        flex-basis: 5rem;
+        flex-shrink: 1;
+    }
 }
 
 .property-card-wrapper {
     position: relative;
+    font-size: 2vw;
 
     button {
-        height: 1rem;
-        width: 20%;
+        height: 6vw;
+        width: 90%;
+        bottom: 25%;
+        font-size: 2em;
 
         position: absolute;
         margin: auto;
-        top: 0;
-        bottom: 0;
         left: 0;
         right: 0;
 
