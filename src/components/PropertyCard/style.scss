@@ -19,7 +19,8 @@
 
     div.price {
         @include bottom-border-radius(1rem);
-        height: 9vw;
+        height: 6vw;
+        padding: 0.5rem;
 
         border: 0.5vw solid;
         border-top: none;
