@@ -1,3 +1,4 @@
-import App from './App';
+import ConnectedApp, { App } from './App';
 
-export default App;
+export default ConnectedApp;
+export { App };

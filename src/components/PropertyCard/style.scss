@@ -16,15 +16,6 @@
     img {
         max-width: 100%;
     }
-
-    div.price {
-        @include bottom-border-radius(1rem);
-        height: 6vw;
-        padding: 0.5rem;
-
-        border: 0.5vw solid;
-        border-top: none;
-    }
 }
 
 .property-card__heading,
@@ -34,4 +25,13 @@
 
 .property-card__main-image {
     display:block;
+}
+
+.property-card__price {
+    @include bottom-border-radius(1rem);
+    height: 6vw;
+    padding: 0.5rem;
+
+    border: 0.5vw solid;
+    border-top: none;
 }

@@ -6,3 +6,23 @@ html {
 html, body {
     margin: 0;
 }
+
+button:focus {
+    outline: none;
+}
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+}
+  
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+}

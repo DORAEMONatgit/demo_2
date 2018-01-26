@@ -1,9 +1,9 @@
-import { getPlayerRatings } from './index';
+import { getPropertyList } from './index';
 
-describe('getPlayerRatings() helper function', () => {
-    it('should return an array', () => {
-        const result = getPlayerRatings();
-        expect(result).to.be.an('array');
-        expect(result.length).to.be.above(0);
+describe('getPropertyList() api call for data fetch', () => {
+    it('should return correct data type', () => {
+        const result = getPropertyList();
+
+        expect(result).to.be.a('object');
     });
 });
