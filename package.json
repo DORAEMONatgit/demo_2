@@ -2,7 +2,6 @@
   "name": "demo",
   "version": "1.0.0",
   "main": "src/index.js",
-  "author": "y.w",
   "scripts": {
     "start": "webpack-dev-server --color --hot --progress --content-base public/",
     "test": "cross-env NODE_ENV=test nyc --all mocha --opts mocha.opts --no-deprecation",
