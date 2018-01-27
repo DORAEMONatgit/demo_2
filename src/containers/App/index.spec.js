@@ -4,98 +4,112 @@ import { createStore } from 'redux';
 
 import { appReducer } from '~/reducers';
 import { getPropertyList } from '~/api';
-import ConnectedApp, { App } from './index';
+import App from './index';
 
-describe('<ConnectedApp/>', () => {
-    const propertyList = getPropertyList();
-    const getWrapper = () => {
-        const store = createStore(appReducer, propertyList);
-        return mount(
-            <Provider store={store}>
-              <ConnectedApp />
-            </Provider>
-        );
+const propertyList = getPropertyList();
+const listWrapperSelector = '.main-app__column-view-list-wrapper';
+const propertyCardSelector = '.property-card';
+const mainImageSelector = '.property-card__main-image';
+
+/**
+ * Return wrapper for
+ * {
+ *     mounted <App/>,
+ *     result cards,
+ *     saved cards
+ * }
+ */
+function getWrapper() {
+    const store = createStore(appReducer, propertyList);
+    const wrapper = mount(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
+
+    const cardColumns = wrapper.find(listWrapperSelector);
+    const resultCards = cardColumns.at(0).find(propertyCardSelector);
+    const savedCards = cardColumns.at(1).find(propertyCardSelector);
+
+    return {
+        wrapper,
+        resultCards,
+        savedCards
     }
+};
+
+/**
+ * Testing connected <App/> using sample json
+ * 
+ * Require sample json to have at least 1 result and 1 saved property.
+ */
+describe('<ConnectedApp/>', () => {
+    const initialState = propertyList;
 
     it('should render correctly', () => {
-        const wrapper = getWrapper();
+        const { wrapper } = getWrapper();
         expect(wrapper.length).not.to.throw;
     });
 
     it('should render all results', () => {
-        const wrapper = getWrapper();
+        const { wrapper, resultCards } = getWrapper();
 
-        const expected = propertyList.results.length;
-        const results = wrapper
-            .find('.main-app__column-div-list-wrapper')
-            .at(0)
-            .find('.property-card');
-
-        expect(results.length).to.equal(expected);
+        const expected = initialState.results.length;
+        expect(resultCards.length).to.equal(expected);
     });
 
     it('should render all saved', () => {
-        const wrapper = getWrapper();
+        const { wrapper, savedCards } = getWrapper();
 
-        const expected = propertyList.saved.length;
-        const saved = wrapper
-            .find('.main-app__column-div-list-wrapper')
-            .at(1)
-            .find('.property-card');
-            
-        expect(saved.length).to.equal(expected);
+        const expected = initialState.saved.length;
+        expect(savedCards.length).to.equal(expected);
     });
 
     context('after clicked on add property button', () => {
-        const wrapper = getWrapper();
+        it('should add the property card view in saved', () => {
+            const { wrapper, resultCards } = getWrapper();
 
-        it('should render 1 extra saved', () => {
-            const resultCards = wrapper
-                .find('.main-app__column-div-list-wrapper')
-                .at(0)
-                .find('.property-card');
-            const firstCardAddButton = resultCards
-                .at(0)
-                .find('button');
+            const propertyToAdd = resultCards.at(0);
+            // Click on the add property button
+            propertyToAdd.find('button').simulate('click');
+            const addedMainImage = propertyToAdd.find(mainImageSelector).prop('src');
 
-            firstCardAddButton.simulate('click');
+            // Expect the length of saved to grow by 1
+            const props = wrapper.find('App').props();
+            const expectedLength = initialState.saved.length + 1;
+            const actualLength = props.saved.length;
+            expect(actualLength).to.equal(expectedLength);
 
-            const expected = propertyList.saved.length + 1;
-            const saved = wrapper
-                .find('.main-app__column-div-list-wrapper')
-                .at(1)
-                .find('.property-card');
-                
-            expect(saved.length).to.equal(expected);
+            // Confirm the new property is in saved
+            const searchInSaved = props.saved.find(item => {
+                return item.mainImage === addedMainImage;
+            });
+            expect(searchInSaved).to.not.equal(undefined);
+            expect(searchInSaved.mainImage).to.equal(addedMainImage);
         });
     });
 
     context('after clicked on remove property button', () => {
-        const wrapper = getWrapper();
+        it('should remove the property card view from saved', () => {
+            const { wrapper, savedCards } = getWrapper();
 
-        it('should remove 1 property from saved', () => {
-            const savedCards = wrapper
-                .find('.main-app__column-div-list-wrapper')
-                .at(1)
-                .find('.property-card');
-            const firstCardRemoveButton = savedCards
-                .at(0)
-                .find('button.remove');
+            const propertyToRemove = savedCards.at(0);
+            const imageToRemove = propertyToRemove.find(mainImageSelector).prop('src');
+            expect(imageToRemove).not.be.empty;
+            // Click on the remove property button
+            propertyToRemove.find('button.remove').simulate('click');
 
-            firstCardRemoveButton.simulate('click');
+            // Expect the length of saved to drop by 1
+            const props = wrapper.find('App').props();
+            const expectedLength = initialState.saved.length - 1;
+            const actualLength = props.saved.length;
+            expect(actualLength).to.equal(expectedLength);
 
-            const expected = propertyList.saved.length - 1;
-            const saved = wrapper.find('App').props().saved;
-
-            expect(saved.length).to.equal(expected);
+            // Confirm property is not in saved
+            const searchInSaved = props.saved.find(item => {
+                return item.mainImage === imageToRemove;
+            });
+            expect(searchInSaved).to.equal(undefined);
         });
     });
-});
-
-describe('<App />', () => {
-    it('should render correctly', () => {
-        const wrapper = mount(<App results={[]} saved={[]}/>);
-
-        expect(wrapper).to.not.throw;
-    })
 });

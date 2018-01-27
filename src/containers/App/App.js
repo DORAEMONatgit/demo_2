@@ -9,7 +9,7 @@ import style from './style.scss';
 import PropertyCard from '~/components/PropertyCard';
 import * as actions from '~/actions';
 
-export class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         
@@ -51,21 +51,26 @@ export class App extends React.Component {
         const blockName = this.blockName;
         return (
             <div className={blockName}>
-                <div className={`${blockName}__column-div`}>
-                    <div className={`${blockName}__column-div-heading`}>
+                {/* Results column */}
+                <div className={`${blockName}__column-view`}>
+                    <div className={`${blockName}__column-view-heading`}>
                         Results
                     </div>
-                    <div className={`${blockName}__column-div-list-wrapper`}>
+                    <div className={`${blockName}__column-view-list-wrapper`}>
                         {results}
                     </div>
                 </div>
-                <div className={`${blockName}__column-div-padding-div`}>
+
+                {/* padding div for spacing */}
+                <div className={`${blockName}__column-view-padding-div`}>
                 </div>
-                <div className={`${blockName}__column-div`}>
-                    <div className={`${blockName}__column-div-heading`}>
+
+                {/* Saved properties column */}
+                <div className={`${blockName}__column-view`}>
+                    <div className={`${blockName}__column-view-heading`}>
                         Saved Properties
                     </div>
-                    <div className={`${blockName}__column-div-list-wrapper`}>
+                    <div className={`${blockName}__column-view-list-wrapper`}>
                         <TransitionGroup>
                             {savedProperties}
                         </TransitionGroup>
@@ -81,13 +86,19 @@ App.propTypes = {
     saved: PropTypes.array.isRequired
 };
 
-export default connect(
-    // istanbul ignore next
-    state => ({
+function mapStateToProps(state) {
+    return {
         ...state
-    }),
-    // istanbul ignore next
-    dispatch => ({
-        actions: bindActionCreators(actions, dispatch),
-    })
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
 )(App);

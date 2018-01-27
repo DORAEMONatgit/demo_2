@@ -19,7 +19,7 @@ export function appReducer(state = initialState, action) {
             // Filter out property from saved to prevent duplicatation
             const filteredList = state.saved.filter(property => {
                 return property.id !== action.property.id;
-            })
+            });
 
             return {
                 ...state,

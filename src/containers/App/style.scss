@@ -13,7 +13,7 @@
     justify-content: center;
 }
 
-.main-app__column-div {
+.main-app__column-view {
     padding: 10px;
     flex-basis: 64rem;
     flex-shrink: 1;
@@ -26,19 +26,19 @@
     flex-shrink: 1;
 }
 
-.main-app__column-div-heading {
+.main-app__column-view-heading {
     font-size: 3vw;
     text-align: center;
     white-space: nowrap;
 }
 
-.main-app__column-div-list-wrapper {
+.main-app__column-view-list-wrapper {
     border: 0.2vw double grey;
     padding: 2vw;
     flex-grow: 1;
 }
 
-.main-app__column-div-list-wrapper .property-card {
+.main-app__column-view-list-wrapper .property-card {
     position: relative;
     font-size: 2vw;
 
@@ -50,7 +50,7 @@
     }
 }
 
-.main-app__column-div-list-wrapper .property-card button {
+.main-app__column-view-list-wrapper .property-card button {
     @include absoluteCenter();
 
     height: 4vw;
