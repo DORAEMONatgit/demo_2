@@ -8,11 +8,11 @@ import { ActionTypes } from '~/constants';
  * @return {object}
  */
 export function addProperty(property) {
-    return {
-        type: ActionTypes.ADD_PROPERTY,
-        property
-    };
-};
+  return {
+    type: ActionTypes.ADD_PROPERTY,
+    property
+  };
+}
 
 /**
  * Redux action for remove property
@@ -22,8 +22,8 @@ export function addProperty(property) {
  * @return {object}
  */
 export function removeProperty(property) {
-    return {
-        type: ActionTypes.REMOVE_PROPERTY,
-        property
-    };
-};
+  return {
+    type: ActionTypes.REMOVE_PROPERTY,
+    property
+  };
+}

@@ -13,8 +13,8 @@ const propertyList = getPropertyList();
 const store = createStore(appReducer, propertyList);
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 )

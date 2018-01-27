@@ -6,5 +6,5 @@ import propertyList from './propertyList.json';
  * @return {object}
  */
 export function getPropertyList() {
-    return propertyList;
+  return propertyList;
 }

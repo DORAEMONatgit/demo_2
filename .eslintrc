@@ -1,0 +1,20 @@
+{
+    "extends": ["airbnb","eslint:recommended","plugin:react/recommended"],
+    "globals": {
+        "sinon": true,
+        "expect": true,
+        "mount": true
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true,
+        "mocha": true
+    },
+    "plugins": [
+        "react",
+        "import",
+        "jsx-a11y",
+        "chai-friendly"
+    ]
+}
