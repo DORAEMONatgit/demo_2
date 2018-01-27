@@ -43,7 +43,7 @@ function getWrapper() {
  * 
  * Require sample json to have at least 1 result and 1 saved property.
  */
-describe('Connected <App/>', () => {
+describe('Render connected <App/>', () => {
   const initialState = propertyList;
 
   it('should render correctly', () => {

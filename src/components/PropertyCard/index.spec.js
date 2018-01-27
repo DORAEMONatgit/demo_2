@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropertyCard from './index';
 
-describe('<PropertyCard/>', () => {
+describe('Render <PropertyCard />', () => {
   const property = {
     price: null,
     agency: {
