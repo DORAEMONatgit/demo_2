@@ -1,4 +1,4 @@
-@mixin absoluteCenter() {
+@mixin absolute-center() {
   left: 0;
   margin: auto;
   position: absolute;
@@ -7,17 +7,17 @@
 
 .main-app {
   display: flex;
-  max-width: 100rem;
-  margin: auto;
-  width: 100%;
   justify-content: center;
+  margin: auto;
+  max-width: 100rem;
+  width: 100%;
 }
 
 .main-app__column-view {
   display: flex;
   flex-basis: 64rem;
-  flex-shrink: 1;
   flex-direction: column;
+  flex-shrink: 1;
   padding: 10px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .main-app__column-view-list-wrapper {
-  border: 0.2vw double grey;
+  border: 0.2vw double 	#c0c0c0;
   flex-grow: 1;
   padding: 2vw;
 }
@@ -51,13 +51,13 @@
 }
 
 .main-app__column-view-list-wrapper .property-card button {
-  @include absoluteCenter();
+  @include absolute-center();
 
-  background-color: #D9EBD2;
-  border: 0.25vw solid #1F6505;
+  background-color: #d9ebd2;
+  border: 0.25vw solid #1f6505;
   border-radius: 2rem;
   bottom: 20%;
-  color: #1F6505;
+  color: #1f6505;
   display: none;
   font-size: 1em;
   height: 4vw;
@@ -67,23 +67,23 @@
   width: 80%;
 
   &:hover {
-      cursor: pointer;
-      opacity: 1;
+    cursor: pointer;
+    opacity: 1;
   }
 
   &[disabled] {
-      border-width: 0.1vw;
-      bottom: 3%;
-      display: block;
-      height: 3vw;
-      opacity: 0.9;
-      width: 30%;
+    border-width: 0.1vw;
+    bottom: 3%;
+    display: block;
+    height: 3vw;
+    opacity: 0.9;
+    width: 30%;
   }
 
   &.remove {
-      background-color: #F4CCCD;
-      border-color: #FF0000;
-      color: #FF0000;
+    background-color: #f4cccd;
+    border-color: #f00;
+    color: #f00;
   }
 }
 
@@ -96,7 +96,7 @@
 }
 
 .fade-exit.fade-exit-active.property-card {
-  transition: all 200ms;
   margin: 0;
   max-height: 0;
+  transition: all 200ms;
 }

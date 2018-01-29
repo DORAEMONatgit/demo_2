@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import style from './style.scss';
-
 import PropertyCard from '~/components/PropertyCard';
 import * as actions from '~/actions';
+
+import './style.scss';
 
 class App extends React.Component {
   constructor(props) {

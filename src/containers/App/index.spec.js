@@ -52,14 +52,14 @@ describe('Render connected <App/>', () => {
   });
 
   it('should render all results', () => {
-    const { wrapper, resultCards } = getWrapper();
+    const { resultCards } = getWrapper();
 
     const expected = initialState.results.length;
     expect(resultCards.length).to.equal(expected);
   });
 
   it('should render all saved', () => {
-    const { wrapper, savedCards } = getWrapper();
+    const { savedCards } = getWrapper();
 
     const expected = initialState.saved.length;
     expect(savedCards.length).to.equal(expected);

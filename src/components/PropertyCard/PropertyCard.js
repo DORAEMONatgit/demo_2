@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style.scss';
+import './style.scss';
 
 export default class PropertyCard extends React.Component {
   constructor(props) {
@@ -54,3 +54,7 @@ PropertyCard.propTypes = {
   property: PropTypes.object.isRequired,
   children: PropTypes.element,
 };
+
+PropertyCard.defaultProps = {
+  children: null,
+}

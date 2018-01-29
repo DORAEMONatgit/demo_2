@@ -1,5 +1,6 @@
 {
-    "extends": ["airbnb","eslint:recommended","plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended"],
     "globals": {
         "sinon": true,
         "expect": true,
@@ -14,7 +15,14 @@
     "plugins": [
         "react",
         "import",
-        "jsx-a11y",
-        "chai-friendly"
-    ]
+        "jsx-a11y"
+    ],
+    "settings": {
+        "import/resolver": "webpack"
+    },
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "import/prefer-default-export": "off",
+        "react/forbid-prop-types": [2, { "forbid": ["any", "array"]}]
+    }
 }

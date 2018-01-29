@@ -7,6 +7,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 });
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   target: 'web',
@@ -18,11 +19,14 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
         test: /\.js$/,
-        use: [
-        {
-          loader:'babel-loader'
-        }],
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+      },
+      {
+        test: /\.js$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       { test: /\.json$/,
@@ -52,6 +56,13 @@ module.exports = {
   plugins: [
     HtmlWebpackPluginConfig,
     new ExtractTextPlugin('assets/styles/main.css'),
+    new styleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+    })
   ],
   resolve: {
     extensions: ['.js'],

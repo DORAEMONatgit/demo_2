@@ -7,13 +7,13 @@ import { ActionTypes } from '~/constants';
  * 
  * @return {object}
  */
-export function addProperty(property) {
-  return {
-    type: ActionTypes.ADD_PROPERTY,
-    property
-  };
-}
-
+                    export function addProperty(property) {
+                      return {
+                        type: ActionTypes.ADD_PROPERTY,
+                        property
+                      };
+                    }
+                    
 /**
  * Redux action for remove property
  * 
