@@ -7,17 +7,17 @@ describe('Render <PropertyCard />', () => {
     price: null,
     agency: {
       brandingColors: {
-        primary: 'blue'
+        primary: 'blue',
       },
-      logo: null
+      logo: null,
     },
     id: null,
-    mainImage: null
+    mainImage: null,
   };
 
   const getWrapper = () => {
     return mount(<PropertyCard property={property} />);
-  }
+  };
 
   it('should render correctly', () => {
     const wrapper = getWrapper();

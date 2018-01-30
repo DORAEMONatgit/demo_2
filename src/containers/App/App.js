@@ -24,7 +24,7 @@ class App extends React.Component {
       return (
         <PropertyCard property={property} key={property.id}>
           <button
-            onClick={() => { this.props.actions.addProperty(property) }}
+            onClick={() => { this.props.actions.addProperty(property); }}
             disabled={alreadySaved}
           >
             {btnText}
@@ -38,7 +38,7 @@ class App extends React.Component {
         <CSSTransition timeout={200} classNames="fade" key={property.id}>
           <PropertyCard property={property}>
             <button
-              onClick={() => { this.props.actions.removeProperty(property) }}
+              onClick={() => { this.props.actions.removeProperty(property); }}
               className='remove'
             >
                             remove property
@@ -91,13 +91,13 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    ...state
+    ...state,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 

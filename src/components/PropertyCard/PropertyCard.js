@@ -13,11 +13,11 @@ export default class PropertyCard extends React.Component {
   render() {
     const property = this.props.property;
     const headingStyle = {
-      backgroundColor: property.agency.brandingColors.primary
-    }
+      backgroundColor: property.agency.brandingColors.primary,
+    };
 
     const priceDivStyle = {
-      borderColor: property.agency.brandingColors.primary
+      borderColor: property.agency.brandingColors.primary,
     };
 
     const blockName = this.blockName;
@@ -57,4 +57,4 @@ PropertyCard.propTypes = {
 
 PropertyCard.defaultProps = {
   children: null,
-}
+};

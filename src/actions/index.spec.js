@@ -4,13 +4,13 @@ import * as actions from './index';
 describe('Redux actions for add/remove property', () => {
   const property = {
     id: 99,
-    price: '$7,000'
+    price: '$7,000',
   };
 
   it('should create an action for add property', () => {
     const expected = {
       type: ActionTypes.ADD_PROPERTY,
-      property
+      property,
     };
     const result = actions.addProperty(property);
 
@@ -20,7 +20,7 @@ describe('Redux actions for add/remove property', () => {
   it('should create an action for remove property', () => {
     const expected = {
       type: ActionTypes.REMOVE_PROPERTY,
-      property
+      property,
     };
     const result = actions.removeProperty(property);
 

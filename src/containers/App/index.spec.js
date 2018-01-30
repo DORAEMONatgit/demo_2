@@ -34,8 +34,8 @@ function getWrapper() {
   return {
     wrapper,
     resultCards,
-    savedCards
-  }
+    savedCards,
+  };
 }
 
 /**
