@@ -11,7 +11,7 @@ const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   target: 'web',
-  entry: ['./src/index.js',],
+  entry: ['./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/js/index_bundle.js',
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader','eslint-loader',],
+        use: ['babel-loader','eslint-loader'],
         exclude: /node_modules/,
       },
       { test: /\.json$/,
@@ -61,7 +61,7 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.js',],
+    extensions: ['.js'],
     alias: {
       ['~']: resolve(__dirname, 'src'),
     },
